@@ -1,0 +1,10 @@
+运行之后访问：
+http://localhost:8080/MyFtpProject/main/showIndex.do
+
+配置文件信息
+cn.huahai.ftp.util 的 私有属性
+
+hostname = "119.23.240.79"; //主机名
+port = 21; //端口号
+username = "adzj"; //用户名
+password = "Adzj123@789"; //密码
