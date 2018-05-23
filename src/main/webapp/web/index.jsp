@@ -7,12 +7,17 @@
 <meta charset="utf-8">
 <title>文件上传</title>
 <script type="text/javascript" src="${pageContext.request.contextPath}/web/jquery-3.1.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/web/jquery.treemenu.js"></script> 
 <link type="text/css" href="${pageContext.request.contextPath}/web/css/upload.css">
+<link href="${pageContext.request.contextPath}/web/jquery.treemenu.css" rel="stylesheet" type="text/css">
 	<style type="text/css">
 	body {
 		font-size: 14px;
 	}
-	
+	html,body{
+		height:100%;
+		background: #2C3E50;
+	}
 	input {
 		vertical-align: middle;
 		margin: 0;
@@ -55,13 +60,17 @@
 	
 	.result {
 		height: 200px;
-		padding-top: 30px;
-		text-align: center;
-		font-size: 30px;
 		color: white;
 		word-wrap: break-word;
 		word-break: break-all;
-		overflow: hidden;
+	}
+	.result ul{
+		padding: 0;
+	}
+	.result a{
+		color: white;
+		word-wrap: break-word;
+		word-break: break-all;
 	}
 	
 	.spinner {
@@ -75,7 +84,9 @@
 	 .FileList >a{
 	 color: white;
 	 display: block;
-	 font-size: 20px;
+	 font-size: 16px;
+	 line-height:25px;
+	 text-align: left;
 	 }
 	.spinner > div {
 	  background-color: #67CF22;
@@ -134,7 +145,16 @@
 				name="file" class="file" id="iconPic" onchange="getImage()" />
 		</form>
 		<div class="result">
-			<div class="FileList"></div>
+			<div class="FileList">
+				<ul class="tree">
+				  <li><span>全部文件</span>
+				    <ul>
+				      
+				    </ul>
+				  </li>
+				  
+				</ul>
+			</div>
 			<div class="resultText"></div>
 			<div class="spinner">
 				<div class="rect1"></div>
@@ -199,12 +219,12 @@
 			success : function(data) {
 				console.log(data);
 				if(data.state){
-					$(".FileList").html("");
+					$(".tree>li>ul").html("");
 					var dom = "";
 					for(var i = 0;i<data.data.length;i++){
-						dom += `<a href="${pageContext.request.contextPath}/main/downLoad.do?filename=\${data.data[i]}">\${data.data[i]}</a>`
+						dom += `<li><a class="active"  href="${pageContext.request.contextPath}/main/downLoad.do?filename=\${data.data[i]}">\${data.data[i]}</a></li>`
 					}
-					$(".FileList").html(dom);
+					$(".tree>li>ul").html(dom);
 				}
 			},
 			error:function(e){
@@ -213,5 +233,8 @@
 		})
 	}
 	getFilelist();
+	$(function(){
+        $(".tree").treemenu({delay:300}).openActive();
+    });
 </script>
 </html>

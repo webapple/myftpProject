@@ -11,7 +11,6 @@
   height: 100%;
   width: 6px;
   display: inline-block;
-   
   -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
   animation: stretchdelay 1.2s infinite ease-in-out;
 }
@@ -53,6 +52,7 @@
 body {
 	font-size: 14px;
 }
+
 
 input {
 	vertical-align: middle;
@@ -104,3 +104,39 @@ input {
 	word-break: break-all;
 	overflow: hidden;
 }
+/*插件css*/
+*{list-style:none;border:none;}
+body{font-family:Arial;background-color:#2C3E50;}
+.tree {  color:#46CFB0;width:800px;margin:100px auto;}
+.tree li,
+.tree li > a,
+.tree li > span {
+    padding: 4pt;
+    border-radius: 4px;
+}
+
+.tree li a {
+   color:#46CFB0;
+    text-decoration: none;
+    line-height: 20pt;
+    border-radius: 4px;
+}
+
+.tree li a:hover {
+    background-color: #34BC9D;
+    color: #fff;
+}
+
+.active {
+    background-color: #34495E;
+    color: white;
+}
+
+.active a {
+    color: #fff;
+}
+
+.tree li a.active:hover {
+    background-color: #34BC9D;
+}
+
